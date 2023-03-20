@@ -150,18 +150,28 @@ export const ShopItem = ({setCosmeticId, cosmeticId, equipCosmetic, shop,item,fi
     updateLocal(false);
   }
   return (
-    <div>
+    <div className="shopparent"> 
+      <div className="productdiv">
         <img className="img" src={value.img}/>
-        <h1>{value.name}</h1>
-        <h2>{value.price}</h2>
-        <h2>{value.equipped}</h2>
-        
-        <button onClick={ 
+        <div className="product">
+          
+          <h1>{value.name}</h1>
+          <h2>Price: ${value.price}</h2>
+          <button className="button" onClick={ 
             () =>{
       
               funcs[item].effect()
          
           } } disabled={buttonText === "Equipped"}>{buttonText}</button>
+        </div>
+        
+      </div>
+      
+      
+        
+      
+        
+        
     </div>
   )
 }

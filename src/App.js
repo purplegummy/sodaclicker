@@ -1,9 +1,11 @@
-import './App.css';
+
 import { Shop } from './components/Shop';
 import React from 'react';
 import { motion } from "framer-motion";
+import fizzBoostLogo from './cosmetics/plus.png'
 import cosmetic1 from "./cosmetics/default.png"
 import cosmetic2 from "./cosmetics/green.png"
+import './App.css';
 function App() {
   const [fizzPerClick, setFizzPerClick] = React.useState(1);
   const [showShop, setShowShop] = React.useState(false);
@@ -19,7 +21,7 @@ function App() {
 
   const [shop, setShop] = React.useState({
     FizzBoost: {
-      img: cosmetic1,
+      img: fizzBoostLogo,
       name: "FizzBoost",
       cosmetic: false,
       price: 10,
@@ -83,7 +85,7 @@ function App() {
   }
   storeInLocalStorage("fizzPerClick", fizzPerClick);
   storeInLocalStorage("Shop", shop);
-  storeInLocalStorage("Score", score);
+  storeInLocalStorage("Score", score+fizzPerClick);
   storeInLocalStorage("Image", currentCosmeticId)
   }
 
@@ -116,7 +118,7 @@ function App() {
   if (showShop){
     return (
       <div className="App">
-        <button onClick={() => setShowShop(!showShop)}>{showShop ? "X" : "Shop"} </button>
+        <button className="button-2" onClick={() => setShowShop(!showShop)}>{showShop ? "X" : "Shop"} </button>
         <h1 className='home'>${score}</h1>
         {showShop ? <Shop setCosmeticId={setCurrentCosmeticId} cosmeticId={currentCosmeticId} equipCosmetic={equipCosmetic} shop={shop} fizzPerClick={fizzPerClick} setFizzPerClick={setFizzPerClick} score={score} setScore={setScore} setShop={setShop}></Shop> : <div onClick={() => {
           setScore(score+fizzPerClick)
@@ -136,7 +138,7 @@ function App() {
   )} else {
     return (
       <div className="App">
-        <button onClick={() => setShowShop(!showShop)}>{showShop ? "X" : "Shop"} </button>
+        <button className="button-2" onClick={() => setShowShop(!showShop)}>{showShop ? "X" : "Shop"} </button>
         <h1 className='home'>${score}</h1>
        <div onClick={() => {
           setScore(score+fizzPerClick)
