@@ -1,14 +1,15 @@
 import React from 'react'
 import {ShopItem} from './ShopItem'
-export const Shop = ({shop, fizzPerClick, setFizzPerClick, score}) => {
+export const Shop = ({setCosmeticId, cosmeticId, equipCosmetic, shop, fizzPerClick, setFizzPerClick, score, setScore, setShop}) => {
   
-  console.log(JSON.stringify(shop));
+ 
 
   return (
     <div>
       {
-        Object.keys(shop).map((item) => {
-          return <><ShopItem item={item} shop={shop} fizzPerClick={fizzPerClick} setFizzPerClick={setFizzPerClick} score={score}/></>
+        Object.keys(shop).map((item, value) => {
+          
+          return <><ShopItem key={value} setCosmeticId={setCosmeticId} cosmeticId={cosmeticId} equipCosmetic={equipCosmetic} item={item} value={Object.values(shop)[value]} shop={shop} fizzPerClick={fizzPerClick} setFizzPerClick={setFizzPerClick} score={score} setScore={setScore} setShop={setShop}/></>
       })
       }
       
